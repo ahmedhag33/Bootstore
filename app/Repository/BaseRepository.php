@@ -4,13 +4,12 @@ namespace App\Repository;
 
 use App\Repository\IBaseRepository;
 use Illuminate\Database\Eloquent\Model;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 
 class BaseRepository implements IBaseRepository
 {
 
 
-    private $val;
 
     public $colums = [];
     /**      
