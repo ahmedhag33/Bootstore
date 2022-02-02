@@ -5,7 +5,7 @@ namespace App\Models\Products;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ProductCatgory extends Model
+class Category extends Model
 {
     /*******
      * --------------------
@@ -19,11 +19,11 @@ class ProductCatgory extends Model
      *--------------------
      **/
 
-    protected $table = 'productcatgorys';
+    protected $table = 'categorys';
     /**
      *--------------------
      * Tables Colums 
      *--------------------
      **/
-    protected $fillable = ['id', 'name_en', 'name_ar', 'desc_en', 'desc_ar', 'deleted_at'];
+    protected $fillable = ['id', 'name_en', 'name_ar', 'deleted_at'];
 }

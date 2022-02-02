@@ -13,7 +13,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::group(
     ['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
     function () {
@@ -24,26 +23,26 @@ Route::group(
 
             /*-------------------------
                  * Start Product management 
-                 *--------------------------
+                 *-------------------------- 
                  */
-            Route::group(['prefix' => 'product', 'namespace' => 'Product'], function () {
+            Route::group(['prefix' => 'book', 'namespace' => 'Product'], function () {
                 /*-------------------------
                  * Start Product Category management 
                  *--------------------------
                  */
-                Route::group(['prefix' => 'product_catgory'], function () {
+                Route::group(['prefix' => 'catgory'], function () {
 
-                    Route::get('/', 'ProductCatgoryController@get')->name('adminpanel.product.product_catgory.show');
+                    Route::get('/', 'CategoryController@get')->name('adminpanel.book.catgory.show');
 
-                    Route::get('add', 'ProductCatgoryController@add')->name('adminpanel.product.product_catgory.add');
+                    Route::get('add', 'CategoryController@add')->name('adminpanel.book.catgory.add');
 
-                    Route::post('create', 'ProductCatgoryController@create')->name('adminpanel.product.product_catgory.create');
+                    Route::post('create', 'CategoryController@create')->name('adminpanel.book.catgory.create');
 
-                    Route::get('edit/{id}', 'ProductCatgoryController@getbyid');
+                    Route::get('edit/{id}', 'CategoryController@getbyid');
 
-                    Route::post('update/{id}', 'ProductCatgoryController@update')->name('adminpanel.product.product_catgory.update');
+                    Route::post('update/{id}', 'CategoryController@update')->name('adminpanel.book.catgory.update');
 
-                    Route::get('delete/{id}', 'ProductCatgoryController@delete');
+                    Route::get('delete/{id}', 'CategoryController@delete');
                 });
                 /*-------------------------
                  * End Product Category management 
