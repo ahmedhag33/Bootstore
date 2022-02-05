@@ -37,6 +37,10 @@
                 <a class="list-group-item list-group-item-action list-group-item-light p-3"
                     href="{{ route('adminpanel.book.catgory.show') }}">{{ __('adminpage.ProductCatgory') }}</a>
             </div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                    href="{{ URL::to('adminpanel/book/publisher/') }}">{{ __('adminpage.publisher') }}</a>
+            </div>
         </div>
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">

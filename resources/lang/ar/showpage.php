@@ -12,5 +12,6 @@ return [
     'desc' => 'الوصف',
     'edit' => 'تحديث',
     'delete' => 'حذف',
-    'CreateNew' => 'انشاء جديد'
+    'CreateNew' => 'انشاء جديد',
+    'photo' => 'الصورة'
 ];

@@ -15,5 +15,6 @@ return [
     'Dashboard' => 'لوحة التحكم الرئيسية',
     'sitecontrolpanel' => 'لوحة تحكم الموقع',
     'mainadminp' => 'اهلا بك فى لوحة التحكم الخاصة بموقع المتجر الالكترونى',
-    'ProductCatgory' => 'التصنيف '
+    'ProductCatgory' => 'التصنيف ',
+    'publisher' => 'دار النشر'
 ];

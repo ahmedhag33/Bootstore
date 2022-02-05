@@ -13,6 +13,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group(
     ['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
     function () {
@@ -26,10 +27,7 @@ Route::group(
                  *-------------------------- 
                  */
             Route::group(['prefix' => 'book', 'namespace' => 'Product'], function () {
-                /*-------------------------
-                 * Start Product Category management 
-                 *--------------------------
-                 */
+                /**s*/
                 Route::group(['prefix' => 'catgory'], function () {
 
                     Route::get('/', 'CategoryController@get')->name('adminpanel.book.catgory.show');
@@ -44,10 +42,13 @@ Route::group(
 
                     Route::get('delete/{id}', 'CategoryController@delete');
                 });
-                /*-------------------------
-                 * End Product Category management 
-                 *--------------------------
-                 */
+                /**e*/
+                ####
+                /**s*/
+                Route::resource('publisher', 'PublisherController')->only([
+                    'index', 'create', 'store', 'edit', 'update', 'destroy'
+                ]);
+                /**e*/
             });
             /*-------------------------
                  * End Product management 

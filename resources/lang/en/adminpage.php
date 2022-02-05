@@ -15,5 +15,6 @@ return [
     'Dashboard' => 'Dashboard',
     'sitecontrolpanel' => 'Site Control Panel',
     'mainadminp' => 'Welcome to the dashboard of the online store',
-    'ProductCatgory' => 'Catgory'
+    'ProductCatgory' => 'Catgory',
+    'publisher' => 'Publisher'
 ];

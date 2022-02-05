@@ -12,6 +12,7 @@ return [
     'desc' => 'Desc',
     'edit' => 'Edit',
     'delete' => 'Delete',
-    'CreateNew' => 'Create New'
+    'CreateNew' => 'Create New',
+    'photo'=>'Photo'
 
 ];
