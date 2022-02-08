@@ -12,5 +12,5 @@ return [
     'Name_Arabic' => 'Name Arabic',
     'Describe_English' => 'Describe English',
     'Describe_Arabic' => 'Describe Arabic',
-    'save' => 'Save'
+    'save' => 'Save',
 ];

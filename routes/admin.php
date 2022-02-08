@@ -49,6 +49,12 @@ Route::group(
                     'index', 'create', 'store', 'edit', 'update', 'destroy'
                 ]);
                 /**e*/
+                ####
+                /**s*/
+                Route::resource('author', 'AuthorController')->only([
+                    'index', 'create', 'store', 'edit', 'update', 'destroy'
+                ]);
+                /**e*/
             });
             /*-------------------------
                  * End Product management 

@@ -21,6 +21,9 @@
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link href="{{ URL::asset('admin/css/styles.css') }}" rel="stylesheet" />
     @endif
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{{ URL::asset('css/rate.css') }}" rel="stylesheet" />
 
 </head>
 
@@ -40,6 +43,10 @@
             <div class="list-group list-group-flush">
                 <a class="list-group-item list-group-item-action list-group-item-light p-3"
                     href="{{ URL::to('adminpanel/book/publisher/') }}">{{ __('adminpage.publisher') }}</a>
+            </div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                    href="{{ URL::to('adminpanel/book/author/') }}">{{ __('adminpage.author') }}</a>
             </div>
         </div>
         <!-- Page content wrapper-->
@@ -65,7 +72,7 @@
     <script src="https://cdn.rtlcss.com/bootstrap/v4.5.3/js/bootstrap.bundle.min.js"
         integrity="sha384-40ix5a3dj6/qaC7tfz0Yr+p9fqWLzzAXiwxVLt9dw7UjQzGYw6rWRhFAnRapuQyK" crossorigin="anonymous">
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
 
 </body>

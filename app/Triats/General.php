@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Triats;
+namespace App\Triats;
 
 /*----------------------
  * trait to use method to any controllers  
