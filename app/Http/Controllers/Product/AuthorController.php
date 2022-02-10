@@ -8,7 +8,7 @@ use App\Triats\General;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\AuthorRequest;
-use App\Repository\Product\IAuthorRepository;
+use App\Services\Product\IAuthorService;
 
 class AuthorController extends Controller
 {
@@ -20,11 +20,11 @@ class AuthorController extends Controller
      * create object of repository
      *------------------ 
      */
-    private $repository;
+    private $service;
 
-    public function __construct(IAuthorRepository $repository)
+    public function __construct(IAuthorService $service)
     {
-        $this->repository = $repository;
+        $this->service = $service;
     }
     /**
      * Display a listing of the resource.
@@ -33,7 +33,7 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $authors = $this->repository->getbycolums();
+        $authors = $this->service->getbycolums();
         return view('adminpanel.book.author.index', compact('authors'));
     }
 
@@ -56,7 +56,7 @@ class AuthorController extends Controller
     public function store(AuthorRequest $request)
     {
         $file_name = $this->saveimage($request->photo, 'images/author');
-        $this->repository->create([
+        $this->service->store([
             'photo' => $file_name,
             'name_en' => $request->name_en,
             'name_ar' => $request->name_ar,
@@ -87,7 +87,7 @@ class AuthorController extends Controller
      */
     public function edit($id)
     {
-        $authors = $this->repository->getbyid($id);
+        $authors = $this->service->getbyid($id);
         return view('adminpanel.book.author.edit', compact('authors'));
     }
 
@@ -100,7 +100,7 @@ class AuthorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->repository->update($id, [
+        $this->service->update($id, [
             'rate' => $request->rate
         ]);
         session::flash('message', 'Successfully created post');
@@ -115,7 +115,7 @@ class AuthorController extends Controller
      */
     public function destroy($id)
     {
-        $this->repository->delete($id);
+        $this->service->destroy($id);
         return Redirect::to('adminpanel/book/author');
     }
 }

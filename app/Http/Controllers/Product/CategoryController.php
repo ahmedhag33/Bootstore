@@ -6,24 +6,24 @@ namespace App\Http\Controllers\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\CategoryRequest;
-use App\Repository\Product\ICategoryRepository;
+use App\Services\Product\ICategoryService;
 
 class CategoryController extends Controller
 {
-
-    /**----------------
-     * create object of repository
-     *------------------ 
-     */
-    private $repository;
-
-    public function __construct(ICategoryRepository $repository)
+    /**
+     * @var $service 
+     **/
+    private $service;
+    /**
+     * Controctor method
+     **/
+    public function __construct(ICategoryService $service)
     {
-        $this->repository = $repository;
+        $this->service = $service;
     }
     public function get()
     {
-        $productcatgorys  = $this->repository->getbycolums();
+        $productcatgorys  = $this->service->getbycolums();
         return view('adminpanel.book.catgory.show', compact('productcatgorys'));
     }
     public function add()
@@ -32,7 +32,7 @@ class CategoryController extends Controller
     }
     public function create(CategoryRequest $request)
     {
-        $this->repository->create([
+        $this->service->store([
             'name_en' => $request->name_en,
             'name_ar' => $request->name_ar
         ]);
@@ -42,12 +42,12 @@ class CategoryController extends Controller
     }
     public function getbyid($id)
     {
-        $productcatgorys = $this->repository->getbyid($id);
+        $productcatgorys = $this->service->getbyid($id);
         return view('adminpanel.book.catgory.edit', compact('productcatgorys'));
     }
     public function update(Request $request, $id)
     {
-        $this->repository->update($id, [
+        $this->service->update($id, [
             'name_en' => $request->name_en,
             'name_ar' => $request->name_ar
         ]);
@@ -57,7 +57,7 @@ class CategoryController extends Controller
     }
     public function delete($id)
     {
-        $this->repository->delete($id);
+        $this->service->destroy($id);
         return redirect()
             ->route('adminpanel.book.catgory.show');
     }

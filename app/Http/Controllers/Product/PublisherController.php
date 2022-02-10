@@ -8,7 +8,7 @@ use App\Triats\General;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\PublisherRequest;
-use App\Repository\Product\IPublisherRepository;
+use App\Services\Product\IPublisherService;
 
 class PublisherController extends Controller
 {
@@ -16,15 +16,16 @@ class PublisherController extends Controller
      *  trait to use method to any controllers  
      */
     use General;
-    /**----------------
-     * create object of repository
-     *------------------ 
-     */
-    private $repository;
-
-    public function __construct(IPublisherRepository $repository)
+    /**
+     * @var $service 
+     **/
+    private $service;
+    /**
+     * Controctor method
+     **/
+    public function __construct(IPublisherService $service)
     {
-        $this->repository = $repository;
+        $this->service = $service;
     }
     /**
      * Display a listing of the resource.
@@ -33,7 +34,7 @@ class PublisherController extends Controller
      */
     public function index()
     {
-        $publishers = $this->repository->getbycolums();
+        $publishers = $this->service->getbycolums();
         return view('adminpanel.book.publisher.index', compact('publishers'));
     }
 
@@ -56,7 +57,7 @@ class PublisherController extends Controller
     public function store(PublisherRequest $request)
     {
         $file_name = $this->saveimage($request->photo, 'images/publisher');
-        $this->repository->create([
+        $this->service->store([
             'photo' => $file_name,
             'name_en' => $request->name_en,
             'name_ar' => $request->name_ar
@@ -84,7 +85,7 @@ class PublisherController extends Controller
      */
     public function edit($id)
     {
-        $publishers = $this->repository->getbyid($id);
+        $publishers = $this->service->getbyid($id);
         return view('adminpanel.book.publisher.edit', compact('publishers'));
     }
 
@@ -97,7 +98,7 @@ class PublisherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->repository->update($id, [
+        $this->service->update($id, [
             'name_en' => $request->name_en,
             'name_ar' => $request->name_ar
         ]);
@@ -113,7 +114,7 @@ class PublisherController extends Controller
      */
     public function destroy($id)
     {
-        $this->repository->delete($id);
+        $this->service->destroy($id);
         return Redirect::to('adminpanel/book/publisher');
     }
 }
