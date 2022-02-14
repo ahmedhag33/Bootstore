@@ -12,4 +12,9 @@ class Author extends Model
     protected $table = 'authors';
 
     protected $fillable = ['id', 'name_en', 'name_ar', 'desc_en', 'desc_ar', 'rate', 'photo', 'deleted_at'];
+
+    public function books()
+    {
+        return $this->hasMany('App\Models\Products\Book', 'author_id');
+    }
 }

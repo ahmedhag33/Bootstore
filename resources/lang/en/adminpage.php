@@ -17,5 +17,6 @@ return [
     'mainadminp' => 'Welcome to the dashboard of the online store',
     'ProductCatgory' => 'Catgory',
     'publisher' => 'Publisher',
-    'author'=>'Author'
+    'author'=>'Author',
+    'book'=>'Books'
 ];

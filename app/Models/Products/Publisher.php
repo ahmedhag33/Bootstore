@@ -12,4 +12,9 @@ class Publisher extends Model
     protected $table = 'publishers';
 
     protected $fillable = ['id', 'name_en', 'name_ar', 'photo', 'deleted_at'];
+
+    public function books()
+    {
+        return $this->hasMany('App\Models\Products\Book', 'publisher_id');
+    }
 }

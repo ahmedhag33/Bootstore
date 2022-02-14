@@ -5,8 +5,10 @@ namespace App\Providers;
 use App\Services\BaseService;
 use App\Services\IBaseService;
 use App\Services\Product\AuthorService;
+use App\Services\Product\BookService;
 use App\Services\Product\CategoryService;
 use App\Services\Product\IAuthorService;
+use App\Services\Product\IBookService;
 use App\Services\Product\ICategoryService;
 use App\Services\Product\IPublisherService;
 use App\Services\Product\PublisherService;
@@ -25,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ICategoryService::class, CategoryService::class);
         $this->app->bind(IPublisherService::class, PublisherService::class);
         $this->app->bind(IAuthorService::class, AuthorService::class);
+        $this->app->bind(IBookService::class, BookService::class);
     }
     /**
      * Bootstrap any application services.

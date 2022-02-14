@@ -55,6 +55,14 @@ Route::group(
                     'index', 'create', 'store', 'edit', 'update', 'destroy'
                 ]);
                 /**e*/
+                ####
+                /**s*/
+                Route::group(['prefix' => 'books'], function () {
+                    Route::get('/', 'BookController@index')->name('adminpanel.book.books.index');
+
+                    Route::get('create/{type}', 'BookController@create')->name('adminpanel.book.books.create');
+                });
+                /**d*/
             });
             /*-------------------------
                  * End Product management 

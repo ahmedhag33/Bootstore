@@ -14,5 +14,7 @@ return [
     'delete' => 'حذف',
     'CreateNew' => 'انشاء جديد',
     'photo' => 'الصورة',
-    'rate' => 'التقييم'
+    'rate' => 'التقييم',
+    'downloadable' => 'كتب للتحميل',
+    'purchasable' => 'كتب للشراء'
 ];
