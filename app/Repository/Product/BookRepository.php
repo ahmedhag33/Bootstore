@@ -2,10 +2,8 @@
 
 namespace App\Repository\Product;
 
-use Illuminate\Support\Arr;
 use App\Models\Products\Book;
 use App\Repository\BaseRepository;
-use Illuminate\Support\Facades\DB;
 use App\Repository\Product\IBookRepository;
 
 class BookRepository extends BaseRepository implements IBookRepository
