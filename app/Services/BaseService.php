@@ -52,7 +52,7 @@ class BaseService implements IBaseService
     public function store(array $attributes)
     {
         try {
-            $model = $this->repository->create($attributes);
+        $model = $this->repository->create($attributes);
         } catch (Exception $e) {
             Log::info($e->getMessage());
             throw new InvalidArgumentException('Unable to create model data');

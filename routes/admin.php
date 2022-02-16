@@ -61,6 +61,8 @@ Route::group(
                     Route::get('/', 'BookController@index')->name('adminpanel.book.books.index');
 
                     Route::get('create/{type}', 'BookController@create')->name('adminpanel.book.books.create');
+
+                    Route::post('store', 'BookController@store')->name('adminpanel.book.books.store');
                 });
                 /**d*/
             });

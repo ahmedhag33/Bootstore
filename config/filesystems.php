@@ -51,7 +51,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
         'publisher' => [
@@ -63,6 +63,18 @@ return [
         'author' => [
             'driver' => 'local',
             'root' => base_path() . 'public/images/author',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
+        'book' => [
+            'driver' => 'local',
+            'root' => base_path() . 'public/images/book',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
+        'pdf' => [
+            'driver' => 'local',
+            'root' => base_path() . 'public/pdf',
             'url' => env('APP_URL') . '/public',
             'visibility' => 'public',
         ],

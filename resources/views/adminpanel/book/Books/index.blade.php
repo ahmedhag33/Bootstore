@@ -4,35 +4,42 @@
 
     <div class="container-fluid">
         <!-- Example single danger button -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                {{ __('showpage.CreateNew') }}
-            </button>
-            <div class="dropdown-menu">
-                @foreach ($types as $key => $value)
-                    <a class="dropdown-item"
-                        href="{{ route('adminpanel.book.books.create', $key) }}">{{ $value }}</a>
-                @endforeach
+
+        <div class="container">
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    {{ __('showpage.CreateNew') }}
+                </button>
+                <div class="dropdown-menu">
+                    @foreach ($types as $key => $value)
+                        <a class="dropdown-item"
+                            href="{{ route('adminpanel.book.books.create', $key) }}">{{ $value }}</a>
+                    @endforeach
+                </div>
             </div>
-        </div>
-        {{-- <div class="container">
-            <a href="{{ route('author.create') }}" class="link-primary">{{ __('showpage.CreateNew') }}</a>
             <br>
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">{{ __('showpage.id') }}</th>
                         <th scope="col">{{ __('showpage.name') }}</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Publisher</th>
+                        <th scope="col">Author</th>
                         <th scope="col">{{ __('showpage.desc') }}</th>
                         <th scope="col">{{ __('showpage.rate') }}</th>
                         <th scope="col">{{ __('showpage.photo') }}</th>
+                        <th scope="col">File</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">discount</th>
+                        <th scope="col">New Price</th>
                         <th scope="col">{{ __('showpage.edit') }}</th>
                         <th scope="col">{{ __('showpage.delete') }}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($authors as $author)
+                    {{-- @foreach ($authors as $author)
 
                         <tr>
                             <th scope="row">{{ $author->id }}</th>
@@ -65,9 +72,9 @@
                                     </form>
                             </td>
                         </tr>
-                    @endforeach
+                    @endforeach --}}
                 </tbody>
             </table>
-        </div> --}}
+        </div>
     </div>
 @stop
