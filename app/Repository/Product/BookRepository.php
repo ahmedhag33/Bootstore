@@ -5,6 +5,7 @@ namespace App\Repository\Product;
 use App\Models\Products\Book;
 use App\Repository\BaseRepository;
 use App\Repository\Product\IBookRepository;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class BookRepository extends BaseRepository implements IBookRepository
 {
@@ -18,5 +19,19 @@ class BookRepository extends BaseRepository implements IBookRepository
     public function geteunm()
     {
         return $this->model->getEnumValues();
+    }
+    /**
+     * Override Method
+     *  @return Model
+     */
+    public function getbycolums()
+    {
+        return $this->model->with(['categorys' => function ($q) {
+            $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
+        }, 'publishers' => function ($q) {
+            $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
+        }, 'authors' => function ($q) {
+            $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
+        }])->get();
     }
 }

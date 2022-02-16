@@ -52,7 +52,8 @@ class BookController extends Controller
     public function index()
     {
         $types = $this->service->geteunm();
-        return view('adminpanel.book.books.index', compact('types'));
+        $books = $this->service->getbycolums();
+        return view('adminpanel.book.books.index', compact('types', 'books'));
     }
     /**
      * Display a listing of the resource.
