@@ -26,12 +26,34 @@ class BookRepository extends BaseRepository implements IBookRepository
      */
     public function getbycolums()
     {
-        return $this->model->with(['categorys' => function ($q) {
-            $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
-        }, 'publishers' => function ($q) {
-            $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
-        }, 'authors' => function ($q) {
-            $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
-        }])->get();
+        return $this->model->with(
+            [
+                'categorys' => function ($q) {
+                    $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
+                }, 'publishers' => function ($q) {
+                    $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
+                }, 'authors' => function ($q) {
+                    $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
+                }
+            ]
+        )->whereNull('deleted_at')->get();
+    }
+    /** 
+     * Override Method
+     *  @return Model by @param 
+     */
+    public function getbyid($id)
+    {
+        return $this->model->where('id', $id)->with(
+            [
+                'categorys' => function ($q) {
+                    $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
+                }, 'publishers' => function ($q) {
+                    $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
+                }, 'authors' => function ($q) {
+                    $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
+                }
+            ]
+        )->get();
     }
 }

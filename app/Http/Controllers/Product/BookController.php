@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Product;
 use App\Triats\General;
 use App\Http\Controllers\Controller;
 use App\Services\Product\IBookService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Services\Product\IAuthorService;
 use Illuminate\Support\Facades\Redirect;
@@ -96,6 +97,54 @@ class BookController extends Controller
             'author_id' => $request->author_id,
         ]);
         session::flash('message', 'Successfully created post');
+        return Redirect::to('adminpanel/book/books');
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $books = $this->service->getbyid($id);
+        $categorys = $this->categoryservice->getbycolums();
+        $publishers = $this->publisherservice->getbycolums();
+        $authors = $this->authorservice->getbycolums();
+        return view('adminpanel.book.books.edit', compact('books', 'categorys', 'publishers', 'authors'));
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $this->service->update($id, [
+            'name' => $request->name,
+            'desc' => $request->desc,
+            'rate' => $request->rate,
+            'price' => $request->price,
+            'discount' => $request->discount,
+            'new_price' => $request->new_price,
+            'category_id' => $request->category_id,
+            'publisher_id' => $request->publisher_id,
+            'author_id' => $request->author_id,
+        ]);
+        session::flash('message', 'Successfully created post');
+        return Redirect::to('adminpanel/book/books');
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $this->service->destroy($id);
         return Redirect::to('adminpanel/book/books');
     }
 }

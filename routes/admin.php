@@ -63,6 +63,12 @@ Route::group(
                     Route::get('create/{type}', 'BookController@create')->name('adminpanel.book.books.create');
 
                     Route::post('store', 'BookController@store')->name('adminpanel.book.books.store');
+
+                    Route::get('edit/{id}', 'BookController@edit');
+
+                    Route::post('update/{id}', 'BookController@update')->name('adminpanel.book.books.update');
+
+                    Route::delete('/{id}', 'BookController@destroy')->name('adminpanel.book.books.destroy');
                 });
                 /**d*/
             });

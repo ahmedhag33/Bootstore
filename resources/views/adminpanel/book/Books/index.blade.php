@@ -27,6 +27,7 @@
                         <th scope="col">Category</th>
                         <th scope="col">Publisher</th>
                         <th scope="col">Author</th>
+                        <th scope="col">Type</th>
                         <th scope="col">{{ __('showpage.desc') }}</th>
                         <th scope="col">{{ __('showpage.rate') }}</th>
                         <th scope="col">{{ __('showpage.photo') }}</th>
@@ -46,6 +47,7 @@
                             <td>{{ $book->categorys->name }}</td>
                             <td>{{ $book->publishers->name }}</td>
                             <td>{{ $book->authors->name }}</td>
+                            <td>{{ $book->type }}</td>
                             <td>{{ $book->desc }}</td>
                             <td>
                                 <div class="d-flex justify-content-between align-items-center">
@@ -57,27 +59,28 @@
                                 </div>
                             </td>
                             <td><img style="width: 90px; height: 90px;" src="{{ asset("images/author/$book->photo") }}">
-                            {{-- </td>
+                                {{-- </td>
                             <td><embed src="{{ asset("pdf/$book->file") }}" frameborder="0" width="100%" height="100px">
                             </td> --}}
                             <td>{{ $book->price }}</td>
                             <td>{{ $book->discount }}</td>
                             <td>{{ $book->new_price }}</td>
-                            {{-- <td>
+                            <td>
                                 <div class="form-group">
-                                    <a href="{{ url('adminpanel/book/author/' . $author->id . '/edit') }}"
+                                    <a href="{{ url('adminpanel/book/books/edit/' . $book->id) }}"
                                         class="btn btn-primary mb-2">{{ __('showpage.edit') }}</a>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <form action=" {{ route('author.destroy', $author->id) }}" method="post">
+                                    <form action=" {{ route('adminpanel.book.books.destroy', $book->id) }}"
+                                        method="post">
                                         @method('delete')
                                         @csrf
                                         <button class="btn btn-primary mb-2"
                                             type="submit">{{ __('showpage.delete') }}</button>
                                     </form>
-                            </td> --}}
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
