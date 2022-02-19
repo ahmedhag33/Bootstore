@@ -18,12 +18,11 @@
                 </thead>
                 <tbody>
                     @foreach ($publishers as $publisher)
-
                         <tr>
                             <th scope="row">{{ $publisher->id }}</th>
                             <td>{{ $publisher->name }}</td>
                             <td><img style="width: 90px; height: 90px;"
-                                    src="{{ asset("images/publisher/$publisher->photo") }}">
+                                    src="{{ asset("storage/images/publisher/$publisher->photo") }}">
                             <td>
                                 <div class="form-group">
                                     <a href="{{ url('adminpanel/book/publisher/' . $publisher->id . '/edit') }}"

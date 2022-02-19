@@ -20,7 +20,6 @@
                 </thead>
                 <tbody>
                     @foreach ($authors as $author)
-
                         <tr>
                             <th scope="row">{{ $author->id }}</th>
                             <td>{{ $author->name }}</td>
@@ -35,7 +34,7 @@
                                 </div>
                             </td>
                             <td><img style="width: 90px; height: 90px;"
-                                    src="{{ asset("images/author/$author->photo") }}">
+                                    src="{{ asset("storage/images/author/$author->photo") }}">
                             <td>
                                 <div class="form-group">
                                     <a href="{{ url('adminpanel/book/author/' . $author->id . '/edit') }}"

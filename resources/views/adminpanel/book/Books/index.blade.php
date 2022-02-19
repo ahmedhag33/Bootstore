@@ -58,7 +58,8 @@
                                     </div>
                                 </div>
                             </td>
-                            <td><img style="width: 90px; height: 90px;" src="{{ asset("images/author/$book->photo") }}">
+                            <td><img style="width: 90px; height: 90px;"
+                                    src="{{ asset("storage/images/author/$book->photo") }}">
                                 {{-- </td>
                             <td><embed src="{{ asset("pdf/$book->file") }}" frameborder="0" width="100%" height="100px">
                             </td> --}}
