@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\Product;
 
 use Illuminate\Support\Facades\Session;
-use  Illuminate\Support\Facades\Redirect;
-use App\Triats\General;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\PublisherRequest;
 use App\Services\Product\IPublisherService;
+use App\Triats\General\MediaTrait;
 
 class PublisherController extends Controller
 {
     /**
-     *  trait to use method to any controllers  
+     *  MediaTrait with filesystem
      */
-    use General;
+    use MediaTrait;
     /**
      * @var $service 
      **/
@@ -56,7 +56,7 @@ class PublisherController extends Controller
      */
     public function store(PublisherRequest $request)
     {
-        $file_name = $this->saveimage($request->photo, 'images/publisher');
+        $file_name = $this->uploads($request->photo, 'images/publisher/');
         $this->service->store([
             'photo' => $file_name,
             'name_en' => $request->name_en,

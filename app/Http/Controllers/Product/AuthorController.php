@@ -4,18 +4,18 @@ namespace App\Http\Controllers\Product;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
-use App\Triats\General;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\AuthorRequest;
 use App\Services\Product\IAuthorService;
+use App\Triats\General\MediaTrait;
 
 class AuthorController extends Controller
 {
     /**
-     *  trait to use method to any controllers  
+     *  MediaTrait with filesystem
      */
-    use General;
+    use MediaTrait;
     /**----------------
      * create object of repository
      *------------------ 
@@ -55,7 +55,7 @@ class AuthorController extends Controller
      */
     public function store(AuthorRequest $request)
     {
-        $file_name = $this->saveimage($request->photo, 'images/author');
+        $file_name = $this->uploads($request->photo, 'images/author/');
         $this->service->store([
             'photo' => $file_name,
             'name_en' => $request->name_en,

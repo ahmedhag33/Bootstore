@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Product;
 
-use App\Triats\General;
 use App\Http\Controllers\Controller;
 use App\Services\Product\IBookService;
 use Illuminate\Http\Request;
@@ -12,13 +11,14 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\Product\BookRequest;
 use App\Services\Product\ICategoryService;
 use App\Services\Product\IPublisherService;
+use App\Triats\General\MediaTrait;
 
 class BookController extends Controller
 {
     /**
      *  trait to use method to any controllers  
      */
-    use General;
+    use MediaTrait;
     /**
      * @var $service 
      **/
@@ -76,11 +76,11 @@ class BookController extends Controller
      */
     public function store(BookRequest $request)
     {
-        $file_name = $this->saveimage($request->photo, 'images/author');
+        $file_name = $this->uploads($request->photo, 'images/author/');
         if ($request->file === null) {
             $file_pdf = '';
         } else {
-            $file_pdf = $this->saveimage($request->file, 'pdf');
+            $file_pdf = $this->uploads($request->file, 'pdf/');
         }
         $this->service->store([
             'photo' => $file_name,
