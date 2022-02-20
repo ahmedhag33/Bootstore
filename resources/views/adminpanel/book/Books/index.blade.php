@@ -31,7 +31,7 @@
                         <th scope="col">{{ __('showpage.desc') }}</th>
                         <th scope="col">{{ __('showpage.rate') }}</th>
                         <th scope="col">{{ __('showpage.photo') }}</th>
-                        {{-- <th scope="col">File</th> --}}
+                        <th scope="col">File</th>
                         <th scope="col">Price</th>
                         <th scope="col">discount</th>
                         <th scope="col">New Price</th>
@@ -60,9 +60,10 @@
                             </td>
                             <td><img style="width: 90px; height: 90px;"
                                     src="{{ asset("storage/images/author/$book->photo") }}">
-                                {{-- </td>
-                            <td><embed src="{{ asset("pdf/$book->file") }}" frameborder="0" width="100%" height="100px">
-                            </td> --}}
+                            </td>
+                            <td><embed src="{{ asset("storage/pdf/$book->file") }}" frameborder="0" width="100%"
+                                    height="100px">
+                            </td>
                             <td>{{ $book->price }}</td>
                             <td>{{ $book->discount }}</td>
                             <td>{{ $book->new_price }}</td>

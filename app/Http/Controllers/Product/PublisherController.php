@@ -98,10 +98,20 @@ class PublisherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->service->update($id, [
-            'name_en' => $request->name_en,
-            'name_ar' => $request->name_ar
-        ]);
+        if ($request->photo != '') {
+            $fileName = $this->uploads($request->photo, 'images/publisher/');
+            $array =  [
+                'photo' => $fileName,
+                'name_en' => $request->name_en,
+                'name_ar' => $request->name_ar
+            ];
+        } else {
+            $array =  [
+                'name_en' => $request->name_en,
+                'name_ar' => $request->name_ar
+            ];
+        }
+        $this->service->update($id, $array);
         session::flash('message', 'Successfully created post');
         return Redirect::to('adminpanel/book/publisher');
     }

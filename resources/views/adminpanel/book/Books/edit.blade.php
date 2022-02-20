@@ -6,9 +6,18 @@
         <div class="container">
             <h1>{{ __('Forms.Create_Product_Catgory') }}</h1>
             <br>
-            <form method="post" action="            {{ route('adminpanel.book.books.update', $books[0]->id) }}
-                        " enctype="multipart/form-data">
+            <form method="post" action="{{ route('adminpanel.book.books.update', $books[0]->id) }}
+                                                                                    " enctype="multipart/form-data">
                 @csrf
+                <br>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Photo</label>
+                    <div class="col-sm-10">
+                        <img src="{{ asset('storage/images/author/' . $books[0]->photo) }}" width="150">
+                        <br>
+                        <input type="file" name="photo" class="form-control">
+                    </div>
+                </div>
                 <br>
                 <div class="form-group ">
                     <input type="text" value="{{ $books[0]->name }}" class="form-control" name="name" placeholder="Name">
@@ -26,7 +35,8 @@
                 </div>
                 <br>
                 <div class="form-group ">
-                    <input type="text" value="{{ $books[0]->rate }}" class="form-control" name="rate" placeholder="Rate">
+                    <input type="text" value="{{ $books[0]->rate }}" class="form-control" name="rate"
+                        placeholder="Rate">
                     @error('Rate')
                         <small class="text-muted">{{ $message }}</small>
                     @enderror

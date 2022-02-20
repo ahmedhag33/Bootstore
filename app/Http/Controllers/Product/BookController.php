@@ -122,17 +122,34 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->service->update($id, [
-            'name' => $request->name,
-            'desc' => $request->desc,
-            'rate' => $request->rate,
-            'price' => $request->price,
-            'discount' => $request->discount,
-            'new_price' => $request->new_price,
-            'category_id' => $request->category_id,
-            'publisher_id' => $request->publisher_id,
-            'author_id' => $request->author_id,
-        ]);
+        if ($request->photo != '') {
+            $file_name = $this->uploads($request->photo, 'images/author/');
+            $array = [
+                'photo' => $file_name,
+                'name' => $request->name,
+                'desc' => $request->desc,
+                'rate' => $request->rate,
+                'price' => $request->price,
+                'discount' => $request->discount,
+                'new_price' => $request->new_price,
+                'category_id' => $request->category_id,
+                'publisher_id' => $request->publisher_id,
+                'author_id' => $request->author_id,
+            ];
+        } else {
+            $array = [
+                'name' => $request->name,
+                'desc' => $request->desc,
+                'rate' => $request->rate,
+                'price' => $request->price,
+                'discount' => $request->discount,
+                'new_price' => $request->new_price,
+                'category_id' => $request->category_id,
+                'publisher_id' => $request->publisher_id,
+                'author_id' => $request->author_id,
+            ];
+        }
+        $this->service->update($id, $array);
         session::flash('message', 'Successfully created post');
         return Redirect::to('adminpanel/book/books');
     }

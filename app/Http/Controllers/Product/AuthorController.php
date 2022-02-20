@@ -100,9 +100,26 @@ class AuthorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->service->update($id, [
-            'rate' => $request->rate
-        ]);
+        if ($request->photo != '') {
+            $fileName = $this->uploads($request->photo, 'images/author/');
+            $array =  [
+                'photo' => $fileName,
+                'name_en' => $request->name_en,
+                'name_ar' => $request->name_ar,
+                'desc_en' => $request->desc_en,
+                'desc_ar' => $request->desc_ar,
+                'rate' => $request->rate
+            ];
+        } else {
+            $array =  [
+                'name_en' => $request->name_en,
+                'name_ar' => $request->name_ar,
+                'desc_en' => $request->desc_en,
+                'desc_ar' => $request->desc_ar,
+                'rate' => $request->rate
+            ];
+        }
+        $this->service->update($id, $array);
         session::flash('message', 'Successfully created post');
         return Redirect::to('adminpanel/book/author');
     }
