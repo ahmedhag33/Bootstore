@@ -20,6 +20,8 @@ Route::group(
 
         Route::view('adminpanel/', 'adminpanel/main');
 
+        Route::view('adminpanel/login', 'adminpanel/login');
+
         Route::group(['prefix' => 'adminpanel'], function () {
 
             /*-------------------------
