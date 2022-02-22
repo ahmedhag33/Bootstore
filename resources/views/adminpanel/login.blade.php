@@ -43,16 +43,28 @@
                 <div class="card border-0 shadow rounded-3 my-5">
                     <div class="card-body p-4 p-sm-5">
                         <h5 class="card-title text-center mb-5 fw-light fs-5">Sign In Adminpanel</h5>
-                        <form>
+                        <form method="POST" action="{{ route('adminloginpost') }}">
+                            @csrf
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="Username">
+                                <input type="email" name="email" class="form-control" id="floatingInput"
+                                    placeholder="Username">
                                 <label for="floatingInput">Username</label>
                             </div>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPassword"
+                                <input type="password" name="password" class="form-control" id="floatingPassword"
                                     placeholder="Password">
                                 <label for="floatingPassword">Password</label>
                             </div>
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             {{-- <div class="form-check mb-3">
                                 <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
                                 <label class="form-check-label" for="rememberPasswordCheck">

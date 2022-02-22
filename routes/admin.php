@@ -18,12 +18,15 @@ Route::group(
     ['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']],
     function () {
 
-        Route::view('adminpanel/', 'adminpanel/main');
+        Route::get('adminpanel/login', 'AdminController@getlogin')->name('adminpanel.login');
 
-        Route::view('adminpanel/login', 'adminpanel/login');
+        Route::post('adminpanel/login', 'AdminController@postlogin')->name('adminloginpost');
 
-        Route::group(['prefix' => 'adminpanel'], function () {
+        Route::get('admin/logout', 'AdminController@logout')->name('adminLogout');
 
+        Route::group(['prefix' => 'adminpanel', 'middleware' => 'adminauth'], function () {
+
+            Route::get('/', 'DashboardController@index')->name('adminpanel.main');
             /*-------------------------
                  * Start Product management 
                  *-------------------------- 
