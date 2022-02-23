@@ -7,6 +7,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                @if (Route::has('login'))
+                    @auth
+                        <li class="nav-item"><a class="nav-link active" href="{{ url('/home') }}">User Profile</a>
+                        </li>
+                    @else
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a>
+                        </li>
+                        @if (Route::has('register'))
+                            <li class="nav-item"><a class="nav-link"
+                                    href="{{ route('register') }}">Register</a></li>
+                        @endif
+                    @endauth
+                @endif
                 @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                     <li class="nav-item"><a class="nav-link" rel="alternate" hreflang="{{ $localeCode }}"
                             href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
