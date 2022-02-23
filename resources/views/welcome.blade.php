@@ -1,4 +1,4 @@
-@extends('sitelayout.master');
+@extends('sitelayout.master')
 
 @section('content')
     <section class="py-5">
