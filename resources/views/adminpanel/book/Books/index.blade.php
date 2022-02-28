@@ -3,8 +3,6 @@
 @section('content')
 
     <div class="container-fluid">
-        <!-- Example single danger button -->
-
         <div class="container">
             <div class="btn-group">
                 <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -35,8 +33,8 @@
                         <th scope="col">Price</th>
                         <th scope="col">discount</th>
                         <th scope="col">New Price</th>
-                        {{-- <th scope="col">{{ __('showpage.edit') }}</th>
-                        <th scope="col">{{ __('showpage.delete') }}</th> --}}
+                        <th scope="col">{{ __('showpage.edit') }}</th>
+                        <th scope="col">{{ __('showpage.delete') }}</th>
                     </tr>
                 </thead>
                 <tbody>
