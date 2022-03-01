@@ -39,8 +39,7 @@ class BaseRepository implements IBaseRepository
     /*------------------------*/
     public function getbycolums()
     {
-        return $this->model->select($this->colums)->whereNull('deleted_at')
-            ->get();
+        return $this->model->select($this->colums)->whereNull('deleted_at')->paginate(10);
     }
     /*------------------------*/
     /** 

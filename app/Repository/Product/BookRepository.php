@@ -36,7 +36,7 @@ class BookRepository extends BaseRepository implements IBookRepository
                     $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
                 }
             ]
-        )->whereNull('deleted_at')->get();
+        )->whereNull('deleted_at')->paginate(10);
     }
     /** 
      * Override Method

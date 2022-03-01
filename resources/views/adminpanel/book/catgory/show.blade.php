@@ -18,7 +18,6 @@
                 </thead>
                 <tbody>
                     @foreach ($productcatgorys as $productcatgory)
-
                         <tr>
                             <th scope="row">{{ $productcatgory->id }}</th>
                             <td>{{ $productcatgory->name }}</td>
@@ -38,6 +37,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="container">
+                <div class="text-center">
+                    {{ $productcatgorys->links() }}
+                </div>
+            </div>
         </div>
     </div>
 @stop

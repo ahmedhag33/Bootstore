@@ -54,6 +54,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="container">
+                <div class="text-center">
+                    {{ $authors->links() }}
+                </div>
+            </div>
         </div>
     </div>
 @stop

@@ -42,6 +42,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="container">
+                <div class="text-center">
+                    {{ $publishers->links() }}
+                </div>
+            </div>
         </div>
     </div>
 @stop
