@@ -7,4 +7,6 @@ use App\Repository\IBaseRepository;
 interface IBookRepository extends IBaseRepository
 {
     public function geteunm();
+
+    public function getbyasc();
 }

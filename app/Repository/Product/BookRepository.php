@@ -56,4 +56,20 @@ class BookRepository extends BaseRepository implements IBookRepository
             ]
         )->get();
     }
+    public function getbyasc()
+    {
+        return $this->model->with(
+            [
+                'categorys' => function ($q) {
+                    $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
+                }, 'publishers' => function ($q) {
+                    $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
+                }, 'authors' => function ($q) {
+                    $q->select('id', 'name_' . LaravelLocalization::getCurrentLocale() . ' as name');
+                }
+            ]
+        )->whereNull('deleted_at')
+            ->orderBy('id', 'asc')
+            ->paginate(10);
+    }
 }
