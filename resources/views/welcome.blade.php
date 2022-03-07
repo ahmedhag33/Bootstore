@@ -36,7 +36,8 @@
                             <!-- Product actions-->
                             @if ($book->type == 'purchasable')
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><a class="btn btn-danger" href="#">Add to
+                                    <div class="text-center"><a class="btn btn-danger"
+                                            href="{{ route('add.to.cart', $book->id) }}">Add to
                                             cart</a>
                                     </div>
                                 </div>

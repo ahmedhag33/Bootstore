@@ -69,7 +69,7 @@ class BookRepository extends BaseRepository implements IBookRepository
                 }
             ]
         )->whereNull('deleted_at')
-            ->orderBy('id', 'asc')
+            ->orderBy('id', 'desc')
             ->paginate(10);
     }
 }

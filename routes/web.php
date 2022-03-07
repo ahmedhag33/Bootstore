@@ -20,6 +20,8 @@ Route::group(
     function () {
         Route::get('/', 'WelcomeController@index')->name('welcome');
 
+        Route::get('add-to-cart/{id}', 'WelcomeController@AddToCart')->name('add.to.cart');
+
         Auth::routes();
 
         Route::get('/home', 'HomeController@index')->name('home');

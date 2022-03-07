@@ -28,4 +28,13 @@ class WelcomeController extends Controller
         $books = $this->service->getbyasc();
         return view('welcome', compact('books'));
     }
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function AddToCart($id)
+    {
+        return $this->service->addtocart($id);
+    }
 }

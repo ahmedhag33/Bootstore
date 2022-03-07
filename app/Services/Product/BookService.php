@@ -37,4 +37,13 @@ class BookService extends BaseService implements IBookService
     {
         return $this->repository->getbyasc();
     }
+    /**
+     * Check item by id to add this in card 
+     * @return response()
+     */
+    public function addtocart($id)
+    {
+        $book = $this->repository->getbyid($id);
+        return $book;
+    }
 }
