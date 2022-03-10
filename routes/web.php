@@ -20,10 +20,19 @@ Route::group(
     function () {
         Route::get('/', 'WelcomeController@index')->name('welcome');
 
-        Route::get('add-to-cart/{id}', 'WelcomeController@AddToCart')->name('add.to.cart');
+        Route::post('add-cart', 'WelcomeController@AddCart')->name('add.cart');
 
         Auth::routes();
 
         Route::get('/home', 'HomeController@index')->name('home');
+
+        Route::group(['prefix' => 'cart', 'namespace' => 'Cart'], function () {
+
+            Route::get('/', 'CartController@cart')->name('cart.index');
+
+            Route::patch('update-cart', 'CartController@update')->name('update.cart');
+
+            Route::delete('remove-from-cart', 'CartController@remove')->name('remove.from.cart');
+        });
     }
 );

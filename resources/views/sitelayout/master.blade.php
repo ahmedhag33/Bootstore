@@ -20,11 +20,11 @@
     <!-- Navigation-->
     @include('site_include.header');
 
-    @if (session('success'))
+    {{-- @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
-    @endif
+    @endif --}}
 
     <!-- Section-->
     @yield('content')
@@ -36,9 +36,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     {{-- <script src="{{ URL::asset('/js/bootstrap.bundle.min.js') }}"></script> --}}
-
     <!-- Core theme JS-->
     <script src="{{ URL::asset('site/js/scripts.js') }}"></script>
+    @yield('scripts')
 </body>
 
 </html>

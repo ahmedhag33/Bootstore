@@ -36,8 +36,12 @@
                             <!-- Product actions-->
                             @if ($book->type == 'purchasable')
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><a class="btn btn-danger"
+                                    {{-- <div class="text-center"><a class="btn btn-danger"
                                             href="{{ route('add.to.cart', $book->id) }}">Add to
+                                            cart</a>
+                                    </div> --}}
+                                    <div class="text-center"><a class="btn btn-danger" book_id="{{ $book->id }}"
+                                            id="add_btn">Add to
                                             cart</a>
                                     </div>
                                 </div>
@@ -89,4 +93,23 @@
         </div>
         </div>
     </section>
+@section('scripts')
+    <script>
+        $(document).on('click', '#add_btn', function(e) {
+            e.preventDefault();
+            var book_id = $(this).attr('book_id');
+            $.ajax({
+                type: 'post',
+                url: "{{ route('add.cart') }}",
+                data: {
+                    '_token': "{{ csrf_token() }}",
+                    'id': book_id
+                },
+                success: function(response) {
+                    window.location.reload();
+                }
+            });
+        });
+    </script>
+@stop
 @stop

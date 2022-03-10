@@ -33,8 +33,29 @@ class WelcomeController extends Controller
      *
      * @return response()
      */
-    public function AddToCart($id)
+    public function AddCart(Request $request)
     {
-        return $this->service->addtocart($id);
+        $book = $this->service->getbyid($request->id);
+
+        $cart = session()->get('cart', []);
+
+        if (isset($cart[$request->id])) {
+            $cart[$request->id]['quantity']++;
+        } else {
+            $cart[$request->id] = [
+                'name' => $book[0]->name,
+                'quantity' => 1,
+                'price' => $book[0]->price,
+                'photo' => $book[0]->photo
+            ];
+        }
+        session()->put('cart', $cart);
+        return response()->json(
+            [
+                'status' => true,
+                'Message' => 'Success',
+                'id' => $request->id
+            ]
+        );
     }
 }

@@ -9,6 +9,4 @@ interface IBookService extends IBaseService
     public function geteunm();
 
     public function getbyasc();
-
-    public function addtocart($id);
 }
