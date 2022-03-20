@@ -33,6 +33,8 @@ Route::group(
             Route::patch('update-cart', 'CartController@update')->name('update.cart');
 
             Route::delete('remove-from-cart', 'CartController@remove')->name('remove.from.cart');
+
+            Route::get('/checkout', 'CheckoutController@checkout')->name('cart.checkout');
         });
     }
 );

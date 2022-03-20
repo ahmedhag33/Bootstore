@@ -18,7 +18,8 @@
 
 <body>
     <!-- Navigation-->
-    @include('site_include.header');
+    @include('site_include.header')
+   
 
     {{-- @if (session('success'))
         <div class="alert alert-success">
