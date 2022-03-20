@@ -58,11 +58,27 @@
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span
                                 class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-                                <a href="{{ route('cart.index') }}" class="btn btn-primary btn-block">View all</a>
+                        @if (count((array) session('cart')) >= 1)
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
+                                    <a href="{{ route('cart.index') }}" class="btn btn-primary btn-block">View all</a>
+                                </div>
                             </div>
-                        </div>
+                            <br>
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
+                                    <a href="{{ route('cart.checkout') }}"
+                                        class="btn btn-primary btn-block">Payment</a>
+                                </div>
+                            </div>
+                        @else
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
+                                    No Carts Adding yet
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
