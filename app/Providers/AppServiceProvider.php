@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use App\Services\BaseService;
+use App\Services\Cart\CartItemService;
+use App\Services\Cart\ICartItemService;
+use App\Services\Cart\IUserDetailService;
+use App\Services\Cart\UserDetailService;
 use App\Services\IBaseService;
 use App\Services\Product\AuthorService;
 use App\Services\Product\BookService;
@@ -28,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IPublisherService::class, PublisherService::class);
         $this->app->bind(IAuthorService::class, AuthorService::class);
         $this->app->bind(IBookService::class, BookService::class);
+        $this->app->bind(IUserDetailService::class, UserDetailService::class);
+        $this->app->bind(ICartItemService::class, CartItemService::class);
     }
     /**
      * Bootstrap any application services.

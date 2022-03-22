@@ -35,6 +35,10 @@ class Book extends Model
     {
         return $this->belongsTo('App\Models\Products\Author', 'author_id');
     }
+    public function user_details()
+    {
+        return $this->belongsToMany('App\Models\Cart\UserDetail');
+    }
     /**
      * return enum  
      **/

@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use App\Repository\BaseRepository;
+use App\Repository\Cart\CartItemRepository;
+use App\Repository\Cart\ICartItemRepository;
+use App\Repository\Cart\IUserDetailRepository;
+use App\Repository\Cart\UserDetailRepository;
 use App\Repository\IBaseRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repository\Product\AuthorRepository;
@@ -28,5 +32,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(IPublisherRepository::class, PublisherRepository::class);
         $this->app->bind(IAuthorRepository::class, AuthorRepository::class);
         $this->app->bind(IBookRepository::class, BookRepository::class);
+        $this->app->bind(IUserDetailRepository::class, UserDetailRepository::class);
+        $this->app->bind(ICartItemRepository::class, CartItemRepository::class);
     }
 }
