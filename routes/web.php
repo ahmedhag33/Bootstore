@@ -35,6 +35,8 @@ Route::group(
             Route::delete('remove-from-cart', 'CartController@remove')->name('remove.from.cart');
 
             Route::get('/checkout', 'CheckoutController@checkout')->name('cart.checkout');
+
+            Route::post('/store', 'CheckoutController@store')->name('cart.store');
         });
     }
 );
