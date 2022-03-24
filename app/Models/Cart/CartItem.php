@@ -9,7 +9,16 @@ class CartItem extends Pivot
 {
     use SoftDeletes;
 
-    protected $table = 'cart_items';
+    protected $table = 'cartitems';
 
-    protected $fillable = ['id', 'book_id', 'user_detail_id,', 'quantity', 'subtotal', 'status', 'deleted_at'];
+    protected $fillable = ['id', 'book_id', 'userdetail_id', 'quantity', 'subtotal', 'status', 'deleted_at'];
+
+    public function user_details()
+    {
+        return $this->belongsTo('App\Models\Cart\UserDetail', 'user_detail_id');
+    }
+    public function books()
+    {
+        return $this->belongsTo('App\Models\Products\Book', 'book_id');
+    }
 }

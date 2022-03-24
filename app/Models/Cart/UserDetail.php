@@ -10,7 +10,7 @@ class UserDetail extends Model
 
     use SoftDeletes;
 
-    protected $table = 'user_details';
+    protected $table = 'userdetails';
 
     protected $fillable = ['id', 'first_name', 'last_name', 'address', 'mobile', 'paymenttype', 'user_id', 'deleted_at'];
 
@@ -26,7 +26,7 @@ class UserDetail extends Model
      */
     public function books()
     {
-        return $this->belongsToMany('App\Models\Products\book');
+        return $this->belongsToMany('App\Models\Products\Book');
     }
     /**
      *  @return response()
