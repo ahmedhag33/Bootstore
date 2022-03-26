@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Cart;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Cart\CheckoutRequest;
 use App\Models\Cart\UserDetail;
-use App\Models\Products\Book;
 use App\Services\Cart\CartItemService;
 use App\Services\Cart\UserDetailService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
@@ -44,7 +42,7 @@ class CheckoutController extends Controller
     /**
      * @return response()
      */
-    public function store(Request $request)
+    public function store(CheckoutRequest $request)
     {
         $array = [
             'first_name' => $request->first_name,
@@ -67,6 +65,9 @@ class CheckoutController extends Controller
                         'status' => 0
                     ]
                 );
+                $cart = session()->get('cart');
+                unset($cart[$id]);
+                session()->put('cart', $cart);
             }
             if ($cartitem) {
                 return response()->json([

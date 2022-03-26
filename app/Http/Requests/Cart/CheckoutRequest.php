@@ -26,8 +26,10 @@ class CheckoutRequest extends FormRequest
         return [
             'first_name' => 'required|max:100',
             'last_name' => 'required|max:100',
-            'address' =>    'required|regex:/(^[-0-9A-Za-z.,\/ ]+$)/',
-            'mobile' => 'required|numeric|phone_number|size:11',
+            // 'address' =>    'required|regex:/(^[-0-9A-Za-z.,\/ ]+$)/',
+            'address' =>    'required',
+            // 'mobile' => 'required|numeric|phone_number|size:11',
+            'mobile' => 'required|numeric',
             'paymenttype' => 'required'
         ];
     }
