@@ -17,6 +17,7 @@ use App\Services\Product\ICategoryService;
 use App\Services\Product\IPublisherService;
 use App\Services\Product\PublisherService;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +35,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IBookService::class, BookService::class);
         $this->app->bind(IUserDetailService::class, UserDetailService::class);
         $this->app->bind(ICartItemService::class, CartItemService::class);
+        
+        Schema::defaultStringLength(191);
     }
     /**
      * Bootstrap any application services.
