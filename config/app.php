@@ -119,7 +119,7 @@ return [
     |
     */
 
-   'key' => env('APP_KEY','MSIYnkm4vV2O+MKLtObpb1dZvpwB/AqmhTcUD0OGYG='),
+   'key' => env('APP_KEY','MSIYnkm4vV2O+MKLtObpb1dZvpwB/AqmhTcUD0OGYG'),
     
     //'key' => env('APP_KEY','cZIfKJYr8VpxIaDFovSGDX+vpSFzDPpo03JMEWbnwfM'),
  //'key' => env('APP_KEY','SomeRandomString'),
