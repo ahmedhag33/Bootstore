@@ -16,8 +16,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a>
                         </li>
                         @if (Route::has('register'))
-                            <li class="nav-item"><a class="nav-link"
-                                    href="{{ route('register') }}">Register</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                         @endif
                     @endauth
                 @endif
@@ -33,12 +32,12 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">All Products</a></li>
-                        <li>
+                        <li><a class="dropdown-item" href="{{ route('authors') }}">All Products</a></li>
+                        {{-- <li>
                             <hr class="dropdown-divider" />
                         </li>
                         <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li> --}}
                     </ul>
                 </li>
             </ul>
@@ -61,7 +60,8 @@
                         @if (count((array) session('cart')) >= 1)
                             <div class="row">
                                 <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-                                    <a href="{{ route('cart.index') }}" class="btn btn-primary btn-block">View all</a>
+                                    <a href="{{ route('cart.index') }}" class="btn btn-primary btn-block">View
+                                        all</a>
                                 </div>
                             </div>
                             <br>

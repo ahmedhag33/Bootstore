@@ -26,6 +26,8 @@ Route::group(
 
         Route::get('/home', 'HomeController@index')->name('home');
 
+        Route::get('/authors', 'AuthorController@index')->name('authors');
+
         Route::group(['prefix' => 'cart', 'namespace' => 'Cart'], function () {
 
             Route::get('/', 'CartController@cart')->name('cart.index');
